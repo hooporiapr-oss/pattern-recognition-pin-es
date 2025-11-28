@@ -11,7 +11,7 @@
 <div class="res-bg hidden" id="resB"><div class="res"><h2>Resultados</h2><div class="res-score" id="rsS">0</div><div class="res-label">Puntos</div><div class="res-det"><div><b id="rsC">0</b><span>Correctas</span></div><div><b id="rsK">0</b><span>Mejor Racha</span></div></div><div class="record hidden" id="rsR">¡Nuevo Récord!</div><div class="rating" id="rsRt">Nivel: --</div><button class="btn" id="again">Jugar Otra Vez</button><button class="btn btn2" id="menu">Menú</button></div></div>
 <div class="popup-bg hidden" id="limP"><div class="popup"><h3 id="limT">Límite diario</h3><p id="limM">Usaste 3 juegos gratis</p><a href="https://hooporiapr-oss.github.io/akashic-works/">Volver al Inicio</a><button class="btn" id="upg">Desbloquear Ilimitado</button></div></div>
 <script>
-(function(){var PK="ak_pins",UK="ak_users",SK="pres_",DK="pres_dev",MD=3,MX=3,RDS=15,RT=8000;
+(function(){var PK="ak_pins",UK="ak_users",SK="pres_",DK="ak_dev",MD=3,MX=3,RDS=15,RT=8000;
 var pin="",user=null,rnd=0,scr=0,cor=0,stk=0,bstk=0,ans="",tInt=null,tStart=0,wait=false;
 function $(i){return document.getElementById(i)}
 function h(p){var x=0,s=p+"ak";for(var i=0;i<s.length;i++){x=((x<<5)-x)+s.charCodeAt(i);x&=x}return x.toString(36)}
@@ -25,8 +25,8 @@ function gUsr(x){return gU()[x]||null}
 function sUsr(x,d){var u=gU();u[x]=d;sU(u)}
 function gDev(){var id=localStorage.getItem(DK);if(!id){id="d_"+Date.now()+"_"+Math.random().toString(36).substr(2,6);localStorage.setItem(DK,id)}return id}
 function tdy(){var d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()}
-function gTr(){try{var t=JSON.parse(localStorage.getItem(DK+"_t"));if(t&&t.sd)return t}catch(e){}return{n:0,d:tdy(),sd:tdy()}}
-function sTr(t){localStorage.setItem(DK+"_t",JSON.stringify(t))}
+function gTr(){try{var t=JSON.parse(localStorage.getItem("ak_trial"));if(t&&t.sd)return t}catch(e){}return{n:0,d:tdy(),sd:tdy()}}
+function sTr(t){localStorage.setItem("ak_trial",JSON.stringify(t))}
 function dDif(s){return Math.floor((new Date()-new Date(s))/864e5)}
 function canP(){var t=gTr(),td=tdy(),dy=dDif(t.sd);if(dy>=MX)return{ok:false,left:0,exp:true,dl:0};if(t.d!==td){t.n=0;t.d=td;sTr(t)}return{ok:t.n<MD,left:MD-t.n,exp:false,dl:MX-dy}}
 function useT(){var t=gTr(),td=tdy();if(t.d!==td){t.n=0;t.d=td}t.n++;sTr(t);sBan()}
